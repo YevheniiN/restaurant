@@ -46,14 +46,14 @@ const BookingForm = ({ availableTimes, setAvailableTimes, submitForm }) => {
 
   return (
     <form onSubmit={handleSubmit}>
-        <h1>Reserve a table</h1>
+        <h1 data-testid='title'>Reserve a table</h1>
         <div className="form-group">
             <label htmlFor="Date">Date</label>
-            <input type="date" name='date' value={date} onChange={handleDateChange} required/>
+            <input type="date" name='date' value={date} onChange={handleDateChange} required data-testid='date-input'/>
         </div>
         <div className="form-group">
             <label htmlFor="time">Time</label>
-            <select name='time' value={time} onChange={(e) => setTime(e.target.value)} required>
+            <select name='time' value={time} onChange={(e) => setTime(e.target.value)} required data-testid='time-select'>
                 {
                     availableTimes.times.map((time, index) => {
                         return <option value={time} key={index}>{ time }</option>
@@ -63,17 +63,17 @@ const BookingForm = ({ availableTimes, setAvailableTimes, submitForm }) => {
         </div>
         <div className="form-group">
             <label htmlFor="guests">Guests</label>
-            <input type="number" min="1" max="10" value={guests} onChange={(e) => setGuests(e.target.value)} required/>
+            <input type="number" min="1" max="10" value={guests} onChange={(e) => setGuests(e.target.value)} required data-testid='guest-input'/>
         </div>
         <div className="form-group">
             <label htmlFor="occassion">Occassion</label>
-            <select name='occassion' value={occasion} onChange={(e) => setOccasion(e.target.value)} >
+            <select name='occassion' value={occasion} onChange={(e) => setOccasion(e.target.value)} data-testid='occassion-select'>
                 <option value="none">None</option>
                 <option value="Birthday">Birthday</option>
                 <option value="Anniversary">Anniversary</option>
             </select>
         </div>
-        <input type="submit" value="Confirm Reservation" />
+        <input type="submit" value="Confirm Reservation" data-testid='submit-button'/>
     </form>
   )
 }
